@@ -1,0 +1,4 @@
+This project does not yet have a LICENSE. Since it embeds jQuery, the license
+will likely be one that is compatible with jQuery's license(s).
+
+A license will be picked soon (stay tuned).

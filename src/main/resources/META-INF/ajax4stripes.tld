@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+		http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+		version="2.0">
+    
+	<description>Tags for the Stripes framework that add additional AJAX functionality.</description>
+	<display-name>ajax4stripes</display-name>
+	<short-name>a4s</short-name>
+	<uri>http://www.kahowell.net/taglib/ajax4stripes</uri>
+	<tag>
+		<name>ajaxArea</name>
+		<tagclass>net.kahowell.ajax4stripes.AjaxArea</tagclass>
+		<info>Defines an area on a page that can be refreshed through AJAX.</info>
+		<attribute>
+			<name>beanclass</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>ActionBean class (used to generate URL)</description>
+		</attribute>
+		<attribute>
+			<name>action</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>URL for the action to invoke when doing an AJAX refresh.</description>
+		</attribute>
+		<attribute>
+			<name>event</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Event to invoke on the ActionBean (used to generate URL).</description>
+		</attribute>
+		<attribute>
+			<name>dataSelector</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Selector used to serialize form data to be included in refresh request.</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Path to the JSP to render.</description>
+			<required>true</required>
+		</attribute>
+	</tag>
+</taglib>
