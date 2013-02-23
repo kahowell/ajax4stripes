@@ -1,7 +1,7 @@
 ajax4stripes
 ============
 
-_ajax4stripes is a work-in-progress_
+**ajax4stripes is a work-in-progress**
 
 ajax4stripes aims to provide simpler, easier-to-use AJAX functionality for
 the [Stripes Framework][1] than what is available [out-of-the-box][2] (See 
