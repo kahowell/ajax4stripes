@@ -69,7 +69,7 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 	private void addAjaxArea(String id) throws IOException, StripesJspException {
 		getPageContext().getOut().write(
 			MessageFormat.format(
-				"ajax4stripes._areas[{0}] = '{' url :  ''{1}'', dataSelector : ''{2}'' '}';", 
+				"ajax4stripes._areas[''{0}''] = '{' url :  ''{1}'', dataSelector : ''{2}'' '}';", 
 				HtmlUtil.encode(getId()),
 				buildUrl(),
 				HtmlUtil.encode(getDataSelector())
@@ -78,8 +78,8 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 	}
 
 	private void initAjax4Stripes() throws IOException {
-		InputStream jQuery = getClass().getResourceAsStream("ajax4stripes/jquery-1.9.1.min.js");
-		InputStream initScript = getClass().getResourceAsStream("ajax4stripes/init.js");
+		InputStream jQuery = getClass().getResourceAsStream("/ajax4stripes/jquery-1.9.1.min.js");
+		InputStream initScript = getClass().getResourceAsStream("/ajax4stripes/init.js");
 		IOUtils.copy(jQuery, getPageContext().getOut());
 		IOUtils.copy(initScript, getPageContext().getOut());
 	}
@@ -91,6 +91,9 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 	public void doInitBody() throws JspException {}
 
 	public String getDataSelector() {
+		if (dataSelector == null) {
+			return "";
+		}
 		return dataSelector;
 	}
 

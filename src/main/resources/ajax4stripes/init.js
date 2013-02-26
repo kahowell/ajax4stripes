@@ -1,9 +1,9 @@
 var ajax4stripes = {
-	$ : jQuery.noConflict(true);
+	$ : jQuery.noConflict(true),
 	_areas : {},
 	refresh : function(id) {
-		ajaxArea = _areas[id];
-		data = $(ajaxArea.dataSelector).serialize();
-		$('#' + id).load(ajaxArea.url, data);
+		ajaxArea = this._areas[id];
+		data = this.$(ajaxArea.dataSelector).serialize();
+		this.$('#' + id).load(ajaxArea.url, data);
 	}
 };

@@ -7,37 +7,45 @@
     
 	<description>Tags for the Stripes framework that add additional AJAX functionality.</description>
 	<display-name>ajax4stripes</display-name>
+	<tlib-version>0.01</tlib-version>
 	<short-name>a4s</short-name>
 	<uri>http://www.kahowell.net/taglib/ajax4stripes</uri>
 	<tag>
+		<description>Defines an area on a page that can be refreshed through AJAX.</description>
 		<name>ajaxArea</name>
-		<tagclass>net.kahowell.ajax4stripes.AjaxArea</tagclass>
-		<info>Defines an area on a page that can be refreshed through AJAX.</info>
+		<tag-class>net.kahowell.ajax4stripes.AjaxArea</tag-class>
+		<body-content>JSP</body-content>
 		<attribute>
+			<description>ID for the AJAX area. Will be used as an HTML id attribute.</description>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>ActionBean class (used to generate URL)</description>
 			<name>beanclass</name>
 			<rtexprvalue>true</rtexprvalue>
-			<description>ActionBean class (used to generate URL)</description>
 		</attribute>
 		<attribute>
+			<description>URL for the action to invoke when doing an AJAX refresh.</description>
 			<name>action</name>
 			<rtexprvalue>true</rtexprvalue>
-			<description>URL for the action to invoke when doing an AJAX refresh.</description>
 		</attribute>
 		<attribute>
+			<description>Event to invoke on the ActionBean (used to generate URL).</description>
 			<name>event</name>
 			<rtexprvalue>true</rtexprvalue>
-			<description>Event to invoke on the ActionBean (used to generate URL).</description>
 		</attribute>
 		<attribute>
+			<description>Selector used to serialize form data to be included in refresh request.</description>
 			<name>dataSelector</name>
 			<rtexprvalue>true</rtexprvalue>
-			<description>Selector used to serialize form data to be included in refresh request.</description>
 		</attribute>
 		<attribute>
-			<name>name</name>
-			<rtexprvalue>true</rtexprvalue>
 			<description>Path to the JSP to render.</description>
+			<name>name</name>
 			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 </taglib>
