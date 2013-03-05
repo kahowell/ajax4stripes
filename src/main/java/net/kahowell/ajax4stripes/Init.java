@@ -1,12 +1,10 @@
 package net.kahowell.ajax4stripes;
 
-import java.io.IOException;
-import java.util.Properties;
+import net.kahowell.ajax4stripes.support.Initializer;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
-
-import net.kahowell.ajax4stripes.support.Initializer;
+import java.io.IOException;
 
 public class Init extends TagSupport {
 
@@ -17,7 +15,7 @@ public class Init extends TagSupport {
 	@Override
 	public int doEndTag() throws JspException {
 		try {
-            boolean jQueryPresent = Boolean.parseBoolean(pageContext.getServletConfig()
+            boolean jQueryPresent = Boolean.parseBoolean(pageContext.getServletContext()
                     .getInitParameter(JQUERY_PRESENT));
             if (jQueryPresent) {
 				pageContext.setAttribute(Initializer.JQUERY_INIT_FLAG, true);
