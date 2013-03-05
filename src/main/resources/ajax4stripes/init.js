@@ -10,9 +10,9 @@ function __ajax4stripes_findJQuery() {
 var ajax4stripes = {
 	$ : __ajax4stripes_findJQuery(),
 	_areas : {},
-	refresh : function(id) {
+	refresh : function(id, func) {
 		ajaxArea = this._areas[id];
 		data = this.$(ajaxArea.dataSelector).serialize();
-		this.$('#' + id).load(ajaxArea.url, data);
+		this.$('#' + id).load(ajaxArea.url, data, func);
 	}
 };
