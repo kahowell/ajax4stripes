@@ -11,7 +11,11 @@
 	<short-name>a4s</short-name>
 	<uri>http://www.kahowell.net/taglib/ajax4stripes</uri>
 	<tag>
-		<description>Defines an area on a page that can be refreshed through AJAX.</description>
+		<description>
+			Defines an area on a page that can be refreshed through AJAX. Also
+			loads client-side JS libraries necessary to support this (if not
+			already loaded).
+		</description>
 		<name>ajaxArea</name>
 		<tag-class>net.kahowell.ajax4stripes.AjaxArea</tag-class>
 		<body-content>JSP</body-content>
@@ -41,11 +45,23 @@
 			<name>dataSelector</name>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
+	</tag>
+	<tag>
+		<description>
+			Initializes the Ajax4Stripes client-side dependencies (if 
+			necessary) and the ajax4stripes client-side library itself. Use 
+			inside script tags.
+		</description>
+		<name>init</name>
+		<tag-class>net.kahowell.ajax4stripes.Init</tag-class>
+		<body-content>JSP</body-content>
 		<attribute>
-			<description>Path to the JSP to render.</description>
-			<name>name</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Whether JQuery is already present on the page or not. If this
+				attribute is not present or false, this tag will include jQuery
+				directly in the page in noConflict mode.
+			</description>
+			<name>jQueryPresent</name>
 		</attribute>
 	</tag>
 </taglib>

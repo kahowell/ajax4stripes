@@ -1,15 +1,13 @@
 package net.kahowell.ajax4stripes;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.MessageFormat;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTag;
 import javax.servlet.jsp.tagext.Tag;
 
-import org.apache.commons.io.IOUtils;
-
+import net.kahowell.ajax4stripes.support.Initializer;
 import net.sourceforge.stripes.exception.StripesJspException;
 import net.sourceforge.stripes.tag.LinkTagSupport;
 import net.sourceforge.stripes.util.HtmlUtil;
@@ -23,11 +21,9 @@ import net.sourceforge.stripes.util.HtmlUtil;
  */
 public class AjaxArea extends LinkTagSupport implements BodyTag {
 
-	private static final String INIT_FLAG = "_ajax4stripes_init";
+	private final Initializer init = new Initializer(getPageContext());
 	
-	private String dataSelector;
-	
-	private String name;
+	private String dataSelector = "";
 	
 	@Override
 	public int doStartTag() throws JspException {
@@ -38,31 +34,14 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 	@Override
 	public int doEndTag() throws JspException {
 		try {
-			getPageContext().include(getName());
+			writeCloseTag(getPageContext().getOut(), "div");
+			getPageContext().getOut().write("<script>");
+			init.initMissing();
+			addAjaxArea(getId());
+			writeCloseTag(getPageContext().getOut(), "script");
 		} catch (Exception e) {
 			throw new JspException(e);
 		}
-		writeCloseTag(getPageContext().getOut(), "div");
-		try {
-			getPageContext().getOut().write("<script>");
-		} catch (IOException e) {
-			throw new JspException(e);
-		}
-		if (pageContext.getAttribute(INIT_FLAG) == null) {
-			pageContext.setAttribute(INIT_FLAG, true);
-			try {
-				initAjax4Stripes();
-			} catch (IOException e) {
-				throw new JspException(e);
-			}
-		}
-		try {
-			addAjaxArea(getId());
-		} catch (IOException e) {
-			throw new JspException(e);
-		}
-		writeCloseTag(getPageContext().getOut(), "script");
-		
 		return EVAL_PAGE;
 	}
 
@@ -77,13 +56,6 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 		);
 	}
 
-	private void initAjax4Stripes() throws IOException {
-		InputStream jQuery = getClass().getResourceAsStream("/ajax4stripes/jquery-1.9.1.min.js");
-		InputStream initScript = getClass().getResourceAsStream("/ajax4stripes/init.js");
-		IOUtils.copy(jQuery, getPageContext().getOut());
-		IOUtils.copy(initScript, getPageContext().getOut());
-	}
-
 	public int doAfterBody() throws JspException {
 		return SKIP_BODY;
 	}
@@ -91,22 +63,11 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 	public void doInitBody() throws JspException {}
 
 	public String getDataSelector() {
-		if (dataSelector == null) {
-			return "";
-		}
 		return dataSelector;
 	}
 
 	public void setDataSelector(String dataSelector) {
 		this.dataSelector = dataSelector;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 }

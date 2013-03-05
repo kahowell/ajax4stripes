@@ -1,5 +1,14 @@
+function __ajax4stripes_findJQuery() {
+	if (typeof(__ajax4stripes_jquery_present) == 'undefined') {
+		return jQuery;
+	}
+	else {
+		return jQuery.noConflict(true);
+	}
+}
+
 var ajax4stripes = {
-	$ : jQuery.noConflict(true),
+	$ : __ajax4stripes_findJQuery(),
 	_areas : {},
 	refresh : function(id) {
 		ajaxArea = this._areas[id];
