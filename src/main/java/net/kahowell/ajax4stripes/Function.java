@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import javax.servlet.jsp.JspException;
 
+import net.kahowell.ajax4stripes.support.Initializer;
 import net.sourceforge.stripes.tag.LinkTagSupport;
 
 /** 
@@ -18,6 +19,8 @@ import net.sourceforge.stripes.tag.LinkTagSupport;
 public class Function extends LinkTagSupport {
 	
 	private static final Properties PROPERTIES = new Properties();
+	
+	private final Initializer init = new Initializer(getPageContext());
 	
 	private String name;
 	
@@ -40,7 +43,6 @@ public class Function extends LinkTagSupport {
 
 	@Override
 	public int doEndTag() throws JspException {
-		System.err.println(PROPERTIES.getProperty("function"));
 		String function = MessageFormat.format(
 			PROPERTIES.getProperty("function"),
 			name,
@@ -49,6 +51,7 @@ public class Function extends LinkTagSupport {
 			buildUrl()
 		);
 		try {
+			init.initMissing();
 			getPageContext().getOut().write(function);
 		} catch (IOException e) {
 			throw new JspException(e);
