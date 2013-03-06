@@ -20,8 +20,6 @@ public class Function extends LinkTagSupport {
 	
 	private static final Properties PROPERTIES = new Properties();
 	
-	private final Initializer init = new Initializer(getPageContext());
-	
 	private String name;
 	
 	private String dataSelector = "";
@@ -51,7 +49,7 @@ public class Function extends LinkTagSupport {
 			buildUrl()
 		);
 		try {
-			init.initMissing();
+			new Initializer(getPageContext()).initMissing();
 			getPageContext().getOut().write(function);
 		} catch (IOException e) {
 			throw new JspException(e);

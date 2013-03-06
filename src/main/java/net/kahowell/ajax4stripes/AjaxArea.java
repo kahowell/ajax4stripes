@@ -2,6 +2,7 @@ package net.kahowell.ajax4stripes;
 
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.Properties;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTag;
@@ -20,10 +21,18 @@ import net.sourceforge.stripes.util.HtmlUtil;
  * @author  Kevin Howell
  */
 public class AjaxArea extends LinkTagSupport implements BodyTag {
-
-	private final Initializer init = new Initializer(getPageContext());
+	
+	private static final Properties PROPERTIES = new Properties();
 	
 	private String dataSelector = "";
+	
+	static {
+		try {
+			PROPERTIES.load(Function.class.getResourceAsStream("/ajax4stripes/templates.properties"));
+		} catch (IOException e) {
+			throw new RuntimeException("Couldn't load templates", e);
+		}
+	}
 	
 	@Override
 	public int doStartTag() throws JspException {
@@ -36,7 +45,7 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 		try {
 			writeCloseTag(getPageContext().getOut(), "div");
 			getPageContext().getOut().write("<script>");
-			init.initMissing();
+			new Initializer(getPageContext()).initMissing();
 			addAjaxArea(getId());
 			writeCloseTag(getPageContext().getOut(), "script");
 		} catch (Exception e) {
@@ -48,7 +57,7 @@ public class AjaxArea extends LinkTagSupport implements BodyTag {
 	private void addAjaxArea(String id) throws IOException, StripesJspException {
 		getPageContext().getOut().write(
 			MessageFormat.format(
-				"ajax4stripes._areas[''{0}''] = '{' url :  ''{1}'', dataSelector : ''{2}'' '}';", 
+				PROPERTIES.getProperty("ajaxAreaRegistration"), 
 				HtmlUtil.encode(getId()),
 				buildUrl(),
 				HtmlUtil.encode(getDataSelector())
