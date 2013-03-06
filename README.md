@@ -15,11 +15,42 @@ ajax4stripes is inspired by Ajax4jsf (now a part of [RichFaces][richfaces]).
 The goal with ajax4stripes is to make using AJAX with Stripes as easy as using
 some tags and simple JS functions.
 
+[richfaces]: http://www.jboss.org/richfaces
+
+Tags
+====
+
+init
+----
+### Description
+Inserts initialization code, loading jQuery (if necessary) and the client-side
+code.
+### Example
+	<a4s:init />
+
+ajaxArea
+--------
+### Description
+Defines an area which can be refreshed using `ajax4stripes.refresh('<id>')`.
+
+### Example
+#### JSP
 	<a4s:ajaxArea id="counter" beanclass="${actionBean.class.name}"
-		event="updateCounter" name="counter.jsp" />
-
-In a JavaScript call, simply:
-
+		event="updateCounter" />
+#### JavaScript
 	ajax4stripes.refresh('counter');
 
-[richfaces]: http://www.jboss.org/richfaces
+jsFunction
+----------
+### Description
+Generates a JavaScript function which can be used to refresh a page element
+using a specified `ActionBean` `Resolution`. The Resolution is specified the
+same way as a `stripes:url` or `stripes:link` tag. **Should be used inside a
+script tag.**
+
+### Example
+#### JSP
+	<a4s:jsFunction name="plusOne" beanclass="${actionBean.class.name}"
+		event="plusOne" elementId="counter" />
+#### JavaScript
+	plusOne();
