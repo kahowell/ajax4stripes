@@ -48,4 +48,45 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+	<tag>
+		<description>
+			Generates a JavaScript function that when called will invoke an 
+			AJAX request using jQuery's AJAX functions.
+		</description>
+		<name>jsFunction</name>
+		<tag-class>net.kahowell.ajax4stripes.Function</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>Name to give the generated JavaScript function.</description>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>HTML ID of the area to load.</description>
+			<name>elementId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>ActionBean class (used to generate URL)</description>
+			<name>beanclass</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>URL for the action to invoke when doing an AJAX refresh.</description>
+			<name>action</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Event to invoke on the ActionBean (used to generate URL).</description>
+			<name>event</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Selector used to serialize form data to be included in AJAX request.</description>
+			<name>dataSelector</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
 </taglib>
