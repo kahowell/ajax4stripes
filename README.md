@@ -13,9 +13,11 @@ also [this][3]).
 
 ajax4stripes is inspired by Ajax4jsf (now a part of [RichFaces][richfaces]).
 The goal with ajax4stripes is to make using AJAX with Stripes as easy as using
-some tags and simple JS functions.
+some tags and simple JS functions. See the [example project][example] for
+typical usage.
 
 [richfaces]: http://www.jboss.org/richfaces
+[example]: https://github.com/kahowell/ajax4stripes-example
 
 Tags
 ====
