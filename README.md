@@ -5,7 +5,8 @@ ajax4stripes
 
 ajax4stripes aims to provide simpler, easier-to-use AJAX functionality for
 the [Stripes Framework][1] than what is available [out-of-the-box][2] (See 
-also [this][3]).
+also [this][3]). ajax4stripes is licensed under the Apache License, Version
+2.0 (see LICENSE.txt).
 
 [1]: http://www.stripesframework.org
 [2]: http://www.stripesframework.org/display/stripes/AJAX

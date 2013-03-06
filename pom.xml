@@ -5,6 +5,17 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ajax4stripes</name>
 	<description>Library that provides AJAX tags for the Stripes framework. Inspired by Ajax4jsf and Richfaces.</description>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+		<license>
+			<name>MIT License</name>
+			<url>http://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt</url>
+			<comments>Only the embedded jQuery is licensed under MIT license.</comments>
+		</license>
+	</licenses>
 	<developers>
 		<developer>
 			<id>kahowell</id>
