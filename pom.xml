@@ -11,6 +11,10 @@
 			<name>Kevin Howell</name>
 			<url>http://www.kahowell.net</url>
 		</developer>
+		<developer>
+			<id>m3kilpat</id>
+			<name>Matt Kilpatrick</name>
+		</developer>
 	</developers>
 	<scm>
 		<connection>scm:git:git://github.com/kahowell/ajax4stripes.git</connection>
